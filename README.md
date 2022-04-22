@@ -10,7 +10,17 @@ Unless attributed otherwise, everything in this repository is licensed under the
 ## Usage
 
 1. Download STM32CubeIDE Generic Linux installer (.zip) to [./base/installer](./base/installer/) directory.
-1. `$ ./build-docker-image.sh YOUR_DOCKER_LOGIN_NAME`
+1. `$ ./build-docker-image.sh YOUR_DOCKER_LOGIN_NAME`.
+1. `$ ./build-docker-image-gui.sh YOUR_DOCKER_LOGIN_NAME`.
+
+### Build your project
+
+```sh
+$ cd /path/to/cube-ide-project
+
+$ docker run -it --rm --volume `pwd`:/root/workspace/$(basename `pwd`) YOUR_DOCKER_LOGIN_NAME/stm32cubeide:1.9.0 /opt/st/stm32cubeide_1.9.0/headless-build.sh -import /root/workspace/$(basename `pwd`) -cleanBuild $(basename `pwd`)
+```
+
 
 ### Acknowledgements
 

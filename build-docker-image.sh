@@ -3,7 +3,7 @@ set -eu
 
 if [ $# -eq 0 ]; then
     echo "Please set your docker login name as argument."
-    echo "ex.: ./build-docker-image.sh ShotaAk"
+    echo "ex.: ./build-docker-image.sh akshota"
     exit 1
 fi
 LOGIN_NAME=$1

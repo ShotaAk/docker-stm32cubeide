@@ -1,6 +1,13 @@
 #!/bin/bash
 set -eu
 
+if [ $# -eq 0 ]; then
+    echo "Please set your docker login name as argument."
+    echo "ex.: ./build-docker-image.sh akshota"
+    exit 1
+fi
+LOGIN_NAME=$1
+
 SRC_DIR=$(cd $(dirname ${BASH_SOURCE:-$0}); pwd)
 
 # build docker images
@@ -21,7 +28,8 @@ DOCKER_GID=${GID:-$(id -g)}
 
 # build docker images
 cd ${SRC_DIR}/gui
-docker build -t ${DOCKER_USER}/stm32cubeide-gui \
+docker build -t ${LOGIN_NAME}/stm32cubeide-gui:$VERSION \
+    --build-arg LOGIN_NAME=${LOGIN_NAME} \
     --build-arg USER=${DOCKER_USER} \
     --build-arg UID=${DOCKER_UID} \
     --build-arg GROUP=${DOCKER_GROUP} \

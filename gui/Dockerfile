@@ -1,5 +1,6 @@
 ARG VERSION=0.0.0
-FROM tiryoh/stm32cubeide:$VERSION
+ARG LOGIN_NAME=""
+FROM $LOGIN_NAME/stm32cubeide:$VERSION
 
 # Arguments
 ARG USER=initial
