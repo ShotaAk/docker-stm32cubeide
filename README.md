@@ -7,6 +7,11 @@ Dockerfile for STM32CubeIDE
 This repository is licensed under the MIT license, see [LICENSE](./LICENSE).  
 Unless attributed otherwise, everything in this repository is licensed under the MIT license.
 
+## Usage
+
+1. Download STM32CubeIDE Generic Linux installer (.zip) to [./base/installer](./base/installer/) directory.
+1. `$ ./build-docker-image.sh YOUR_DOCKER_LOGIN_NAME`
+
 ### Acknowledgements
 
 * [chikuta/chikuta-dockerfiles](https://github.com/chikuta/chikuta-dockerfiles)

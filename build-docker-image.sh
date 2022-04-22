@@ -1,6 +1,13 @@
 #!/bin/bash
 set -eu
 
+if [ $# -eq 0 ]; then
+    echo "Please set your docker login name as argument."
+    echo "ex.: ./build-docker-image.sh ShotaAk"
+    exit 1
+fi
+LOGIN_NAME=$1
+
 SRC_DIR=$(cd $(dirname ${BASH_SOURCE:-$0}); pwd)
 
 # build docker images
@@ -13,4 +20,4 @@ if [ "$FILE_NAME" == "" ]; then
 fi
 
 VERSION=${FILE_NAME: -5}
-docker build -t tiryoh/stm32cubeide:$VERSION -f Dockerfile . --build-arg ZIP_FILE_NAME=$FILE_NAME --build-arg VERSION=$VERSION
+docker build -t $LOGIN_NAME/stm32cubeide:$VERSION -f Dockerfile . --build-arg ZIP_FILE_NAME=$FILE_NAME --build-arg VERSION=$VERSION
